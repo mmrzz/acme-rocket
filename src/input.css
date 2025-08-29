@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+
+    @keyframes open-menu {
+        0% { transform: scaleX(0) }
+        70% { transform: scaleX(1.1) }
+        100% { transform: scaleX(1) }
+    }
+
+    --animate-open-menu: open-menu 0.3s ease-in-out forwards
+}
+
+@layer utilities {
+    
+    .toggle-btn {
+        @apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:bg-transparent
+    }
+}
+
+/* @custom-variant widescreen ( @media (min-aspect-ratio: 3/2) );
+@custom-variant tallscreen ( @media (max-aspect-ratio: 13/20) ); */
+
+@custom-variant widescreen {
+  @media (min-aspect-ratio: 3/2) {
+    @slot
+  }
+}
+@custom-variant tallscreen {
+  @media (max-aspect-ratio: 13/20) {
+    @slot
+  }
+}
